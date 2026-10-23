@@ -26,6 +26,11 @@ jobs:
     
         - name: Install Dependencies
           run: npm install
+        - name: Check Mongo env vars are set
+          run: |
+            echo "MONGO_URI set:      $([ -n "$MONGO_URI" ] && echo yes || echo NO)"
+            echo "MONGO_USERNAME:     $MONGO_USERNAME"
+            echo "MONGO_PASSWORD len: ${#MONGO_PASSWORD}"        
     
         - name: Unit Testing
           run: npm test
